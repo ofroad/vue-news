@@ -8,7 +8,7 @@
         <li class="item-story-box" v-for="item in day.data">
          <router-link class="item-story" :to="{path: 'detail', query:{aid: item.id}}"> 
             <h3 class="title">{{item.title}}</h3>
-            <img :src="item.images[0]">
+            <img v-if="item.images && item.images.length>0" :src="item.images[0]">
           </router-link>
         </li>
       </ul>

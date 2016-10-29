@@ -2,13 +2,22 @@ import Vue from 'vue';
 import { zhihuimg } from '../filters/index'
 
 var API = {
-    'startPic'  : '/zhihuapi/api/4/start-image/720*1184',
-    'latest'    : '/zhihuapi/api/4/news/latest',
-    'article'   : '/zhihuapi/api/4/news/',
-    'history'   : '/zhihuapi/api/4/news/before/',
-    'cmtCount'  : '/zhihuapi/api/4/story-extra/',
-    'cmtLong'   : '/zhihuapi/api/4/story/',
-    'cmtShort'  : '/zhihuapi/api/4/story/'
+    startPic  : '/zhihuapi/api/4/start-image/720*1184',
+    latest    : '/zhihuapi/api/4/news/latest',
+    article   : '/zhihuapi/api/4/news/',
+    history   : '/zhihuapi/api/4/news/before/',
+    cmtCount  : '/zhihuapi/api/4/story-extra/',
+    cmtLong   : '/zhihuapi/api/4/story/',
+    cmtShort  : '/zhihuapi/api/4/story/'
+}
+
+var DouBanAPI={
+	inTheaters : '/doubanapi/v2/movie/in_theaters',
+	detail : '/doubanapi/v2/movie/subject/',
+	comming : '/doubanapi/v2/movie/coming_soon',
+	weekly : '/doubanapi/v2/movie/weekly',
+	usbox : '/doubanapi/v2/movie/us_box',
+	top250 : '/doubanapi/v2/movie/top250'
 }
 
 /*全都是get方法，统一写函数*/
@@ -59,5 +68,12 @@ export const fetchComments = aid => {
 			commentsData.push(response1)
 			return commentsData;
 		})
+	})
+}
+
+export const douBanInTheaters = () => {
+  var url = DouBanAPI.inTheaters
+  return fetchGet(url).then((response) => {
+		return response
 	})
 }

@@ -5,6 +5,7 @@ Vue.use(Router)
 import Home from '../views/Home.vue'
 import Detail from '../views/Detail.vue'
 import Day from '../views/Day.vue'
+import MvHost from '../views/MovieHome.vue'
 
 
 export default new Router({
@@ -14,6 +15,7 @@ export default new Router({
     // 从 latest 点进 detail 因为latest的article没有爬取conmments 
     { name: 'top-detail', path: '/top-detail', component: Detail, meta: { scrollToTop: true }},
     { name: 'oneday', path: '/date', component: Day, meta: { scrollToTop: true }},
+    { name: 'mvhost', path: '/mvhost', component: MvHost},
     { path: '*', redirect: '/' }
   ]
 })

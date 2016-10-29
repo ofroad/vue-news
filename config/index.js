@@ -28,6 +28,13 @@ module.exports = {
         pathRewrite: {
           '^/zhihuapi': ''
         }
+      },
+      '/doubanapi': {
+        target: 'https://api.douban.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/doubanapi': ''
+        }
       }
 	},
     // CSS Sourcemaps off by default because relative paths are "buggy"
