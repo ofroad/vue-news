@@ -1,6 +1,7 @@
 # vue简单实现知乎日报
 
 > Vue.js 的简单实现
+
 > 知乎日报 Web 版本，基于 Vue 2.0 + Vue-Resource + Vue-Router + Vuex 开发。
 
 ## Build Setup
@@ -66,5 +67,6 @@ npm run build
 
 ### 知乎接口跨域问题
 > 服务器用nginx反向代理实现跨域 本地可以用vue里config/index.js 里面的 proxyTable可以代理转发api
+
 ### 知乎的图片防盗链
 > 主要用到的是Images.weserv.nl这个网站，可以缓存图片，而且可以修改图片的尺寸大小
