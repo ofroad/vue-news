@@ -1,0 +1,73 @@
+<template>
+    <div v-show="show" id="__loading" class="page_loading">
+        <div class="page_loading_inner">
+            <i class="page_loading_icon"></i>{{showTxt}}...
+        </div>
+    </div>
+</template>
+<script>
+    export default {
+        replace: true,
+        props: ['showTxt', 'show']
+    };
+</script>
+<style lang="css">
+    .page_loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0);
+    }
+    
+    .page_loading .page_loading_inner {
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-left: -70px;
+        margin-top: -48px;
+        width: 150px;
+        border-radius: 6px;
+        font-size: 14px;
+        padding: 58px 0 10px 0;
+    }
+    
+    .page_loading .page_loading_inner .page_loading_icon {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        margin-left: -16px;
+        width: 24px;
+        height: 24px;
+        border: 2px solid #fff;
+        border-radius: 24px;
+        -webkit-animation: loading_gif 1s infinite linear;
+        animation: loading_gif 1s infinite linear;
+        clip: rect(0 auto 12px 0);
+    }
+    
+    @keyframes loading_gif {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    @-webkit-keyframes loading_gif {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+</style>

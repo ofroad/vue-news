@@ -1,21 +1,46 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-Vue.use(Router)
+import VueRouter from 'vue-router'
 
-import Home from '../views/Home.vue'
-import Detail from '../views/Detail.vue'
-import Day from '../views/Day.vue'
-import MvHost from '../views/MovieHome.vue'
+Vue.use(VueRouter)
 
-
-export default new Router({
-  routes:[
-    { name: 'home', path: '/', component: Home},
-    { name: 'detail', path: '/detail', component: Detail, meta: { scrollToTop: true }},
-    // 从 latest 点进 detail 因为latest的article没有爬取conmments 
-    { name: 'top-detail', path: '/top-detail', component: Detail, meta: { scrollToTop: true }},
-    { name: 'oneday', path: '/date', component: Day, meta: { scrollToTop: true }},
-    { name: 'mvhost', path: '/mvhost', component: MvHost},
-    { path: '*', redirect: '/' }
-  ]
+const router = new VueRouter({
+    routes: [{
+            name: 'index',
+            path: '/',
+            component: (resolve) => {
+                require(['../views/zhihu/list.vue'], resolve)
+            },
+            meta: { scrollToTop: true }
+        },
+        {
+            name: 'themes',
+            path: '/themes',
+            component: (resolve) => {
+                require(['../views/zhihu/themes.vue'], resolve)
+            }
+        },
+        {
+            name: 'theme-list',
+            path: '/themes/:id',
+            component: (resolve) => {
+                require(['../views/zhihu/themeList.vue'], resolve)
+            }
+        },
+        {
+            name: 'news',
+            path: '/news/:id',
+            component: (resolve) => {
+                require(['../views/zhihu/news.vue'], resolve)
+            }
+        },
+        {
+            name: 'about',
+            path: '/about/',
+            component: (resolve) => {
+                require(['../views/zhihu/about.vue'], resolve)
+            }
+        }
+    ]
 })
+
+export default router

@@ -1,27 +1,25 @@
-import Vue from 'vue';
-import vueResource from 'vue-resource';
-import App from './App';
-import store from './store'
-import router from './router/index';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 import { sync } from 'vuex-router-sync'
-import * as filters from './filters'
 
-Vue.use(vueResource);
-sync(store, router);
+import App from './App'
+import store from './store/index'
+import router from './router/index'
 
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
+Vue.use(VueResource)
+Vue.use(VueRouter)
+Vue.use(Vuex)
 
-Vue.config.debug = true;
+// Vue.config.debug = process.env.NODE_ENV === 'dev'
 
-const app = new Vue({
-    name: 'app',
+sync(store, router)
+
+/* eslint-disable no-new */
+new Vue({
+    el: '#entry',
     router,
     store,
-    render(h) {
-        return h(App)
-    }
-}).$mount('#entry')
-
-export { app, router, store }
+    render: h => h(App)
+})
